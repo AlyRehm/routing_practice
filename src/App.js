@@ -1,24 +1,23 @@
-import logo from './logo.svg';
+
 import './App.css';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Home from './components/Home';
+import Other from './components/Other';
 
 function App() {
-  return (
+  return(
+    <BrowserRouter>
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+
+      <Routes>
+        <Route element={<Home />} path="/home"/>
+        {/* Do not want to hard route these routes as the person can input any word or colors to make things happen. This is where we use the :  */}
+        <Route element={<Other />} path='/:word' />
+        <Route element={<Other />} path='/:word/:color/:bgColor' />
+
+      </Routes>
     </div>
+    </BrowserRouter>
   );
 }
 
